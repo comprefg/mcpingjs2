@@ -23,12 +23,13 @@ try{
 }
 
 async function pingServer(server,port) {
+  var sip=server+":"+port
   try {
-    sip=server+":"+port
+    
     
     const client = require('minecraft-server-util')
     const mserver = await client.status(server,port)
-    //console.log(sip)
+    //console.log(sip)const mserver = await client.status(squid.aternos.host,33711)
     //const response = await util.promisify(mserver.ping).call(mserver)
     //console.log(mserver)
     //console.log(mserver.players)
@@ -51,15 +52,16 @@ async function pingServer(server,port) {
       console.log(sip)
       console.log(error);
       console.log("("+error.message.substring(0, 20)+")");
-    }
+    }console.log(sip);
   }
 }
 
 
   for (const subdomain of domains) {
-    if(subdomain!=""){
+    if(subdomain!==""){
       for (let i = 33710; i < 33712; i++) {
         setTimeout(() => pingServer(subdomain,i), 0);
+        
       }
     }
 }
